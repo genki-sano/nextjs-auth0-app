@@ -1,4 +1,4 @@
-import { useUser } from '@/external/auth0/useUser'
+import { useUser } from '@/external/auth0/contexts/UserProvidor'
 
 export const UserArea = () => {
   const { error, isLoading, isAuthenticated, user, loginWithRedirect, logout } =

@@ -1,6 +1,12 @@
-import { Auth0ContextInterface, Auth0Provider } from '@auth0/auth0-react'
+import {
+  Auth0ContextInterface,
+  Auth0Provider,
+  useAuth0,
+  User as AuthUser,
+} from '@auth0/auth0-react'
 import { auth0Config } from '../config'
 
+export interface User extends AuthUser {}
 export interface UserContextInterface<T> extends Auth0ContextInterface<T> {}
 
 export const UserProvider: React.FC = ({ children }) => {
@@ -13,4 +19,8 @@ export const UserProvider: React.FC = ({ children }) => {
       {children}
     </Auth0Provider>
   )
+}
+
+export const useUser = <T extends User = User>(): UserContextInterface<T> => {
+  return useAuth0()
 }
